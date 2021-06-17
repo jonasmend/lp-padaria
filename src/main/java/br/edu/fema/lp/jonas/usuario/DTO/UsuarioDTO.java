@@ -12,6 +12,7 @@ public class UsuarioDTO {
 	public UsuarioDTO() { }
 	
 	public UsuarioDTO(Usuario usuario) {
+		this.id = usuario.getId();
 		this.nome = usuario.getNome();
 	}
 
