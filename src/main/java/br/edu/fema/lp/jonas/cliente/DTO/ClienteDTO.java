@@ -1,5 +1,8 @@
 package br.edu.fema.lp.jonas.cliente.DTO;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import br.edu.fema.lp.jonas.cliente.model.Cliente;
 
 public class ClienteDTO {
@@ -99,6 +102,12 @@ public class ClienteDTO {
 	}
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+	
+	
+	public static List<ClienteDTO> onverterClientesEmClientesDTO(List<Cliente> listaDeClientes) {
+		
+		return listaDeClientes.stream().map(ClienteDTO::new).collect(Collectors.toList());
 	}
 
 }

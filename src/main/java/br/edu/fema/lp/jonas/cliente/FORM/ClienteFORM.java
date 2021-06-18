@@ -1,63 +1,50 @@
-package br.edu.fema.lp.jonas.cliente.model;
+package br.edu.fema.lp.jonas.cliente.FORM;
 
-import java.util.List;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import br.edu.fema.lp.jonas.cliente.FORM.ClienteFORM;
-import br.edu.fema.lp.jonas.venda.model.Venda;
-
-@Entity
-@Table(name = "cliente")
-public class Cliente {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ClienteFORM {
+	
 	private Long id;
 	
+	@NotNull
+	@NotEmpty
+	@Size(max = 70)
 	private String nome;
-	
-	@Column(name = "data_nascimento")
+
+	@NotNull
+	@NotEmpty
+	@Size(max = 10)
 	private String dataNascimento;
 	
+	@NotNull
+	@NotEmpty
+	@Size(max = 14)
 	private String cpf;
 	
+	@NotNull
+	@NotEmpty
+	@Size(max = 14)
 	private String cep;
 	
+	@NotNull
+	@NotEmpty
+	@Size(max = 70)
 	private String rua;
 	
+	@NotNull
 	private Integer numero;
 	
+	@NotNull
+	@NotEmpty
+	@Size(max = 70)
 	private String bairro;
 	
 	private String complemento;
 	
-	@JsonIgnore
-	@OneToMany
-	private List<Venda> vendasParaCliente;
 	
-	
-	public Cliente() { }
-	
-	public Cliente(ClienteFORM formulario) {
-		this.id = formulario.getId();
-		this.nome = formulario.getNome();
-		this.dataNascimento = formulario.getDataNascimento();
-		this.cpf = formulario.getCpf();
-		this.cep = formulario.getCep();
-		this.rua = formulario.getRua();
-		this.numero = formulario.getNumero();
-		this.bairro = formulario.getBairro();
-		this.complemento = formulario.getComplemento();
-	}
+	public ClienteFORM() { }
 
 
 	public Long getId() {
@@ -122,4 +109,5 @@ public class Cliente {
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
+
 }
