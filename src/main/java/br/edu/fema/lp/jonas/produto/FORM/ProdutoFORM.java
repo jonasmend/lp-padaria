@@ -1,12 +1,8 @@
-package br.edu.fema.lp.jonas.produto.DTO;
+package br.edu.fema.lp.jonas.produto.FORM;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import br.edu.fema.lp.jonas.produto.model.Produto;
-
-public class ProdutoDTO {
+public class ProdutoFORM {
 	
 	private Long id;
 	
@@ -17,16 +13,9 @@ public class ProdutoDTO {
 	private BigDecimal preco;
 	
 	
-	public ProdutoDTO() { }
-	
-	public ProdutoDTO(Produto produto) {
-		this.id = produto.getId();
-		this.desricao = produto.getDesricao();
-		this.estoque = produto.getEstoque();
-		this.preco = produto.getPreco();
-	}
+	public ProdutoFORM() { }
 
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -53,11 +42,6 @@ public class ProdutoDTO {
 	}
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
-	}
-	
-	public static List<ProdutoDTO> converterProdutosEmProdutosDTO(List<Produto> listaDeProdutos) {
-		
-		return listaDeProdutos.stream().map(ProdutoDTO::new).collect(Collectors.toList());
 	}
 
 }

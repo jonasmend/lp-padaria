@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.edu.fema.lp.jonas.produto.FORM.ProdutoFORM;
+
 @Entity
 @Table(name = "produto")
 public class Produto {
@@ -24,6 +26,13 @@ public class Produto {
 	
 	
 	public Produto() { }
+	
+	public Produto(ProdutoFORM formulario) {
+		this.id = formulario.getId();
+		this.desricao = formulario.getDesricao();
+		this.estoque = formulario.getEstoque();
+		this.preco = formulario.getPreco();
+	}
 
 
 	public Long getId() {
