@@ -11,9 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import antlr.collections.List;
 import br.edu.fema.lp.jonas.cliente.model.Cliente;
 import br.edu.fema.lp.jonas.produto.model.Produto;
+import br.edu.fema.lp.jonas.venda.FORM.VendaFORM;
 
 @Entity
 @Table(name = "venda")
@@ -41,6 +41,15 @@ public class Venda {
 	
 	
 	public Venda() { }
+	
+	public Venda(VendaFORM formulario) {
+		this.id = formulario.getId();
+		this.cliente = formulario.getCliente();
+		this.produto = formulario.getProduto();
+		this.quantidade = formulario.getQuantidade();
+		this.valorProduto = formulario.getProduto().getPreco();
+		this.valorVenda = formulario.getProduto().getPreco().multiply(BigDecimal.valueOf(formulario.getQuantidade()));
+	}
 
 
 	public Long getId() {

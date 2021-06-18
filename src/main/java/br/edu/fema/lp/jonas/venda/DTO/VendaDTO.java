@@ -1,6 +1,8 @@
 package br.edu.fema.lp.jonas.venda.DTO;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import br.edu.fema.lp.jonas.cliente.model.Cliente;
 import br.edu.fema.lp.jonas.produto.model.Produto;
@@ -73,5 +75,11 @@ public class VendaDTO {
 	}
 	public void setValorVenda(BigDecimal valorVenda) {
 		this.valorVenda = valorVenda;
+	}
+	
+	
+	public static List<VendaDTO> converterVendasEmVendasDTO(List<Venda> listaDeVendas) {
+		
+		return listaDeVendas.stream().map(VendaDTO::new).collect(Collectors.toList());
 	}
 }
